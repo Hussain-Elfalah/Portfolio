@@ -22,7 +22,7 @@ const Hero = () => {
             Passionate about creating efficient and scalable web solutions.
           </p>
           <a 
-            href="/resume.pdf" 
+            href="/Portfolio/resume.pdf" 
             className="cta-button"
             download
           >
