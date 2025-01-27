@@ -8,7 +8,7 @@ const Hero = () => {
         <div className="profile-pic-wrapper">
           <div className="profile-pic-container">
             <img 
-              src="/images/Protfolio-pic.png" 
+              src="/Portfolio/images/Protfolio-pic.png" 
               alt="Hussain Elfalah" 
               className="profile-pic"
             />

@@ -7,31 +7,31 @@ const Projects = () => {
     {
       title: "Project Managment System",
       description: "A platform developed for an NGO to automate their project management process",
-      image: "/images/projects-images/PMP.png",
+      image: "/Portfolio/images/projects-images/PMP.png",
       link: "https://github.com/Hussain-Elfalah/ProjectManagement.git"
     },
     {
         title: "Fitness FLow",
         description: "A backend for a fitness application that tracks caloris, progress etc..",
-        image: "/images/projects-images/Fitness-Flow.png",
+        image: "/Portfolio/images/projects-images/Fitness-Flow.png",
         link: "https://github.com/Hussain-Elfalah/Fitness-Flow.git"
       },
       {
         title: "Stitsh.ai",
         description: "Chat Bot application using OpenAI's API",
-        image: "/images/projects-images/StitshAI.png",
+        image: "/Portfolio/images/projects-images/StitshAI.png",
         link: "https://github.com/Hussain-Elfalah/Stitsh-ai.git"
       },
       {
         title: "Blog Project",
         description: "A blog application where you can add, edit and delete posts/blogs",
-        image: "/images/projects-images/Blog.png",
+        image: "/Portfolio/images/projects-images/Blog.png",
         link: "https://github.com/Hussain-Elfalah/Blog-API-Project.git"
       },
       {
         title: "Weather App",
         description: "Brings the weather forecast of Benghazi (looks better in mobile view)",
-        image: "/images/projects-images/Weather.png",
+        image: "/Portfolio/images/projects-images/Weather.png",
         link: "https://github.com/Hussain-Elfalah/Weather-App.git"
       },
       {
