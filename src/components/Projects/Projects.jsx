@@ -37,7 +37,7 @@ const Projects = () => {
       {
         title: "Travel Tracker",
         description: "An application to check the countries you visted",
-        image: "/images/projects-images/Travel.png",
+        image: "/Portfolio/images/projects-images/Travel.png",
         link: "https://github.com/Hussain-Elfalah/Travel-Tracker.git"
       },
     // Add more projects as needed
