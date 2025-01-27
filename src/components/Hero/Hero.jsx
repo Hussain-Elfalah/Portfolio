@@ -22,9 +22,9 @@ const Hero = () => {
             Passionate about creating efficient and scalable web solutions.
           </p>
           <a 
-            href="/Portfolio/Resume2.pdf" 
+            href="/Portfolio/resume.pdf"
             className="cta-button"
-            download
+            download="Hussain_Elfalah_CV.pdf"
           >
             Download CV
           </a>
