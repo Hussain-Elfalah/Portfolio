@@ -1,12 +1,18 @@
 import React from 'react';
-import ProjectCard from './ProjectCard';
+import { useTheme } from '../../context/ThemeContext';
+import { translations } from '../../translations';
 import './Projects.css';
 
-const Projects = () => {
+const Projects = ({ language }) => {
+  const { isDarkMode } = useTheme();
+  const t = translations[language].projects;
+
   const projects = [
     {
-      title: "Project Managment System",
-      description: "A platform developed for an NGO to automate their project management process",
+      title: language === 'en' ? "Project Management System" : "نظام إدارة المشاريع",
+      description: language === 'en' 
+        ? "A platform developed for an NGO to automate their project management process"
+        : "منصة تم تطويرها لمنظمة غير حكومية لأتمتة عملية إدارة المشاريع",
       image: "/Portfolio/images/projects-images/PMP.png",
       link: "https://github.com/Hussain-Elfalah/ProjectManagement.git"
     },
@@ -44,14 +50,25 @@ const Projects = () => {
   ];
 
   return (
-    <section className="projects">
-      <h2>My Projects</h2>
+    <section className={`projects ${isDarkMode ? 'dark' : ''}`}>
+      <h2>{t.title}</h2>
       <div className="projects-grid">
         {projects.map((project, index) => (
-          <ProjectCard 
+          <a 
             key={index}
-            {...project}
-          />
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card"
+          >
+            <div className="card-overlay"></div>
+            <div className="card-content">
+              <img src={project.image} alt={project.title} />
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <span className="view-project">{t.viewProject}</span>
+            </div>
+          </a>
         ))}
       </div>
     </section>

@@ -104,3 +104,29 @@
       scrollbar-width: none;
     }
   }
+
+.skills.dark {
+  background-color: var(--dark-background);
+}
+
+.skills.dark h2 {
+  color: var(--dark-text);
+}
+
+.skills.dark .skill-content {
+  background-color: var(--dark-card-bg);
+  color: var(--dark-text);
+}
+
+.skills.dark .skill-content h3 {
+  color: var(--accent-color);
+}
+
+.skills.dark .skill-category {
+  color: var(--primary-color);
+}
+
+.skills.dark .skill-level {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--dark-text);
+}

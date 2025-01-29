@@ -158,3 +158,27 @@
     transition: none;
   }
 }
+
+.projects.dark {
+  background-color: var(--dark-background);
+}
+
+.projects.dark h2 {
+  color: var(--dark-text);
+}
+
+.projects.dark .card-content {
+  background-color: var(--dark-card-bg);
+}
+
+.projects.dark .card-content h3 {
+  color: var(--accent-color);
+}
+
+.projects.dark .card-content p {
+  color: var(--dark-text);
+}
+
+.projects.dark .view-project {
+  color: var(--primary-color);
+}
