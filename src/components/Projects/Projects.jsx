@@ -9,7 +9,7 @@ const Projects = ({ language }) => {
 
   const projects = [
     {
-      title: language === 'en' ? "Project Management System" : "نظام إدارة المشاريع",
+      title: language === 'en' ? "Project Management" : "نظام إدارة المشاريع",
       description: language === 'en' 
         ? "A platform developed for an NGO to automate their project management process"
         : "منصة تم تطويرها لمنظمة غير حكومية لأتمتة عملية إدارة المشاريع",
