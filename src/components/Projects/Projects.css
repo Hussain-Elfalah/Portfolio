@@ -11,30 +11,33 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 1rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: var(--container-padding);
 }
 
 .card {
-  --card-width: 100%;
+  --rotate: 132deg;
   --card-height: 400px;
-  background-size: cover;
-  background-position: center;
-  width: var(--card-width);
-  height: var(--card-height);
-  padding: 3px;
   position: relative;
-  border-radius: 6px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  display: flex;
-  font-size: 1.5em;
-  color: rgb(88 199 250 / 0%);
-  cursor: pointer;
-  font-family: cursive;
+  width: 100%;
+  min-height: var(--card-height);
+  margin: 0 auto;
+  padding: 3px;
+  border-radius: 15px;
   text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 1s;
+  background-color: transparent;
+}
+
+.card:hover {
+  color: rgb(88 199 250 / 100%);
+  transition: color 1s;
 }
 
 .card::before {
@@ -54,6 +57,7 @@
   left: -2%;
   opacity: 0;
   transition: opacity 0.3s ease;
+  animation: none;
 }
 
 .card::after {
@@ -75,10 +79,10 @@
     #4e00c2
   );
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s;
+  animation: none;
 }
 
-/* Show animation only on hover */
 .card:hover::before,
 .card:hover::after {
   opacity: 1;
@@ -86,25 +90,90 @@
 }
 
 .card:hover {
-  color: rgb(88 199 250 / 100%);
-  transition: color 1s;
+  --rotate: 0deg;
+  animation: spin 2.5s linear infinite;
 }
 
 .card-content {
-  background: white;
-  border-radius: 6px;
+  background: var(--card-bg);
+  border-radius: 12px;
   padding: 1rem;
   height: 100%;
   width: 100%;
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   transition: transform 0.3s ease;
+  backface-visibility: hidden;
 }
 
-.card:hover .card-content {
-  transform: scale(0.98);
+.card-content img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.card-content h3 {
+  margin: 0.5rem 0;
+  color: var(--text-color);
+}
+
+.card-content p {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+/* Dark mode styles */
+.projects.dark .card-content {
+  background-color: var(--dark-card-bg);
+}
+
+.projects.dark .card-content h3,
+.projects.dark .card-content p {
+  color: var(--dark-text);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+  }
+  
+  .card-content img {
+    height: 200px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  
+  .card-content {
+    padding: 2rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .card:hover::before {
+    animation: none;
+  }
+  
+  .card-content {
+    transition: none;
+  }
 }
 
 @property --rotate {
@@ -122,63 +191,9 @@
   }
 }
 
-.card-content img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
-
-.card-content h3 {
+/* Add these new styles */
+.view-project {
+  margin-top: auto;
   color: var(--primary-color);
-  margin-bottom: 0.5rem;
-}
-
-.card-content p {
-  color: var(--text-color);
-  font-size: 1rem;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .card:hover::before,
-  .card:hover::after {
-    animation: none;
-  }
-  
-  .card-content {
-    transition: none;
-  }
-}
-
-.projects.dark {
-  background-color: var(--dark-background);
-}
-
-.projects.dark h2 {
-  color: var(--dark-text);
-}
-
-.projects.dark .card-content {
-  background-color: var(--dark-card-bg);
-}
-
-.projects.dark .card-content h3 {
-  color: var(--accent-color);
-}
-
-.projects.dark .card-content p {
-  color: var(--dark-text);
-}
-
-.projects.dark .view-project {
-  color: var(--primary-color);
+  font-weight: 500;
 }

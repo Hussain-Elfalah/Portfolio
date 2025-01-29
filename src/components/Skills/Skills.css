@@ -15,93 +15,78 @@
     overflow: hidden;
     position: relative;
     padding: 1rem 0;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
   }
   
   .skills-track {
     display: flex;
+    gap: 2rem;
+    padding: 1rem;
     transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    min-width: max-content;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
   }
   
   .skill-card {
-    min-width: calc(33.33% - 2rem);
-    margin: 0 1rem;
-    height: 200px;
-    perspective: 1000px;
+    flex: 0 0 300px;
+    padding: 1rem;
   }
   
   .skill-content {
-    background: white;
-    padding: 1.5rem;
+    background: var(--card-bg);
+    padding: 2rem;
     border-radius: 15px;
-    height: 100%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 1rem;
     align-items: center;
     text-align: center;
-    transition: transform 0.3s ease;
-  }
-  
-  .skill-content:hover {
-    transform: translateY(-5px);
+    min-width: 250px;
   }
   
   .skill-content h3 {
-    color: var(--primary-color);
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    margin: 0;
   }
   
   .skill-category {
     color: var(--secondary-color);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
   }
   
   .skill-level {
-    color: var(--text-color);
-    font-weight: 500;
-    padding: 0.25rem 1rem;
+    background: var(--accent-color);
+    color: white;
+    padding: 0.5rem 1rem;
     border-radius: 20px;
-    background-color: #f0f0f0;
+    font-size: 0.9rem;
   }
   
   @media (max-width: 768px) {
-    .skill-card {
-      min-width: calc(100% - 2rem);
-    }
-  
-    .skills-track {
-      transform: none !important;
+    .skills-grid {
+      grid-template-columns: 1fr;
+      padding: 1rem;
     }
   
     .skills-carousel {
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
       padding-bottom: 1rem;
-    }
-  
-    .skills-track {
-      display: flex;
-      gap: 1rem;
-      padding: 0 1rem;
-    }
-  
-    .skill-card {
-      flex: 0 0 80%;
-      scroll-snap-align: center;
-    }
-  
-    /* Hide scrollbar but keep functionality */
-    .skills-carousel::-webkit-scrollbar {
-      display: none;
-    }
-  
-    .skills-carousel {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
     }
   }
 
@@ -129,4 +114,8 @@
 .skills.dark .skill-level {
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--dark-text);
+}
+
+.skills.dark .skill-card {
+  background-color: var(--dark-card-bg);
 }
