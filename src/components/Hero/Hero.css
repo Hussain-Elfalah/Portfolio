@@ -3,6 +3,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .hero.dark {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+  }
+  
+  .hero.dark .hero-text h1,
+  .hero.dark .hero-text h2 {
+    color: var(--dark-text);
+  }
+  
+  .hero.dark .cta-button {
+    background: linear-gradient(45deg, #5ddcff, #3c67e3);
+    color: white;
   }
   
   .hero-content {
@@ -140,8 +156,7 @@
   @media (max-width: 768px) {
     .hero-content {
       flex-direction: column;
-      text-align: center;
-      gap: 2rem;
+      padding: 2rem 1rem;
     }
   
     .profile-pic-container {
@@ -149,12 +164,27 @@
       height: 200px;
     }
   
-    .profile-pic-container::after {
-      filter: blur(10px);
+    .hero-text {
+      text-align: center;
+      padding: 0 1rem;
     }
   
     .hero-text h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
+    }
+  
+    .hero-text h2 {
+      font-size: 1.2rem;
+    }
+  
+    .hero-text p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+  
+    .cta-button {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.9rem;
     }
   }
   

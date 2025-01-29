@@ -1,8 +1,13 @@
 import React from 'react';
 import { FaWhatsapp, FaEnvelope, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { useTheme } from '../../context/ThemeContext';
+import { translations } from '../../translations';
 import './Contact.css';
 
-const Contact = () => {
+const Contact = ({ language }) => {
+  const { isDarkMode } = useTheme();
+  const t = translations[language].contact;
+
   const contactInfo = {
     whatsapp: '+218910526084',
     email: 'Hussain.mh.elfalah@gmail.com',
@@ -19,17 +24,17 @@ const Contact = () => {
   };
 
   return (
-    <section className="contact">
-      <h2>Get In Touch</h2>
+    <section className={`contact ${isDarkMode ? 'dark' : ''}`}>
+      <h2>{t.title}</h2>
       <div className="contact-container">
         <div className="contact-card whatsapp" onClick={handleWhatsAppClick}>
           <div className="card-overlay"></div>
           <div className="icon-wrapper">
             <FaWhatsapp className="contact-icon" />
           </div>
-          <h3>WhatsApp</h3>
+          <h3>{t.whatsapp.title}</h3>
           <p>{contactInfo.whatsapp}</p>
-          <span className="card-hint">Click to chat</span>
+          <span className="card-hint">{t.whatsapp.hint}</span>
         </div>
 
         <a 
@@ -40,9 +45,9 @@ const Contact = () => {
           <div className="icon-wrapper">
             <FaEnvelope className="contact-icon" />
           </div>
-          <h3>Email</h3>
+          <h3>{t.email.title}</h3>
           <p>{contactInfo.email}</p>
-          <span className="card-hint">Click to send email</span>
+          <span className="card-hint">{t.email.hint}</span>
         </a>
 
         <a 
@@ -55,8 +60,8 @@ const Contact = () => {
           <div className="icon-wrapper">
             <FaLinkedin className="contact-icon" />
           </div>
-          <h3>LinkedIn</h3>
-          <p>Connect with me</p>
+          <h3>{t.linkedin.title}</h3>
+          <p>{t.linkedin.hint}</p>
           <span className="card-hint">Click to visit profile</span>
         </a>
 
@@ -70,8 +75,8 @@ const Contact = () => {
           <div className="icon-wrapper">
             <FaInstagram className="contact-icon" />
           </div>
-          <h3>Instagram</h3>
-          <p>Follow me</p>
+          <h3>{t.instagram.title}</h3>
+          <p>{t.instagram.hint}</p>
           <span className="card-hint">Click to visit profile</span>
         </a>
       </div>
