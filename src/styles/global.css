@@ -13,6 +13,8 @@
     --dark-background: #1a1a1a;
     --dark-text: #ffffff;
     --dark-card-bg: #2d2d2d;
+    --font-en: 'Montserrat', sans-serif;
+    --font-ar: 'Cairo', sans-serif;
 }
 
 [data-theme="dark"] {
@@ -28,7 +30,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-en);
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
@@ -39,6 +41,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    min-height: 100vh;
+    background-color: var(--background-color);
 }
 
 section {
@@ -56,6 +60,7 @@ img {
 
 /* RTL Support */
 .rtl {
+    font-family: var(--font-ar);
     direction: rtl;
     text-align: right;
 }
@@ -98,4 +103,11 @@ img {
     .hero-text {
         text-align: center;
     }
+}
+
+/* Fix for the side backgrounds */
+#root {
+    min-height: 100vh;
+    background-color: var(--background-color);
+    transition: background-color 0.3s;
 }

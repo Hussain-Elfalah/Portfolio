@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Hero from './components/Hero/Hero';
 import Skills from './components/Skills/Skills';
 import Projects from './components/Projects/Projects';
@@ -8,10 +8,15 @@ import './styles/global.css';
 
 function App() {
   const [language, setLanguage] = useState('en');
+  const { isDarkMode } = useTheme();
+
+  useEffect(() => {
+    document.body.style.backgroundColor = isDarkMode ? 'var(--dark-background)' : 'var(--background-color)';
+  }, [isDarkMode]);
 
   return (
     <ThemeProvider>
-      <div className="app">
+      <div className={`app ${isDarkMode ? 'dark' : ''}`}>
         <nav className="nav-controls">
           <button 
             onClick={() => setLanguage(lang => lang === 'en' ? 'ar' : 'en')}
