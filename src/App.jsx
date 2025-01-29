@@ -8,6 +8,15 @@ import './styles/global.css';
 
 function App() {
   const [language, setLanguage] = useState('en');
+
+  return (
+    <ThemeProvider>
+      <AppContent language={language} setLanguage={setLanguage} />
+    </ThemeProvider>
+  );
+}
+
+const AppContent = ({ language, setLanguage }) => {
   const { isDarkMode } = useTheme();
 
   useEffect(() => {
@@ -15,27 +24,25 @@ function App() {
   }, [isDarkMode]);
 
   return (
-    <ThemeProvider>
-      <div className={`app ${isDarkMode ? 'dark' : ''}`}>
-        <nav className="nav-controls">
-          <button 
-            onClick={() => setLanguage(lang => lang === 'en' ? 'ar' : 'en')}
-            className="lang-toggle"
-          >
-            {language === 'en' ? 'عربي' : 'English'}
-          </button>
-          <ThemeToggle />
-        </nav>
-        <main className={language === 'ar' ? 'rtl' : 'ltr'}>
-          <Hero language={language} />
-          <Skills language={language} />
-          <Projects language={language} />
-          <Contact language={language} />
-        </main>
-      </div>
-    </ThemeProvider>
+    <div className="app">
+      <nav className="nav-controls">
+        <button 
+          onClick={() => setLanguage(lang => lang === 'en' ? 'ar' : 'en')}
+          className="lang-toggle"
+        >
+          {language === 'en' ? 'عربي' : 'English'}
+        </button>
+        <ThemeToggle />
+      </nav>
+      <main className={language === 'ar' ? 'rtl' : 'ltr'}>
+        <Hero language={language} />
+        <Skills language={language} />
+        <Projects language={language} />
+        <Contact language={language} />
+      </main>
+    </div>
   );
-}
+};
 
 const ThemeToggle = () => {
   const { isDarkMode, toggleTheme } = useTheme();
