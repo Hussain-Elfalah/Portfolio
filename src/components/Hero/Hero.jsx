@@ -24,7 +24,7 @@ const Hero = ({ language }) => {
           <h2>{t.subtitle}</h2>
           <p>{t.description}</p>
           <a 
-            href="/Portfolio/resume.pdf"
+            href="/Portfolio/Resume2.pdf"
             className="cta-button"
             download
           >
