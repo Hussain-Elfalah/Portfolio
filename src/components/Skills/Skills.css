@@ -78,11 +78,29 @@
   
     .skills-carousel {
       overflow-x: auto;
-      scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+    }
+  
+    .skills-track {
+      display: flex;
+      gap: 1rem;
+      padding: 0 1rem;
     }
   
     .skill-card {
+      flex: 0 0 80%;
       scroll-snap-align: center;
+    }
+  
+    /* Hide scrollbar but keep functionality */
+    .skills-carousel::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .skills-carousel {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   }
