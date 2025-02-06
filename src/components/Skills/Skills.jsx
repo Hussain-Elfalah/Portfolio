@@ -24,26 +24,34 @@ const Skills = ({ language }) => {
   useEffect(() => {
     const track = document.querySelector('.skills-track');
     if (!track) return;
-
+  
     const totalWidth = track.scrollWidth;
     const viewportWidth = track.offsetWidth;
     const maxScroll = totalWidth - viewportWidth;
-
+    
     const interval = setInterval(() => {
       setScrollPosition(prev => {
         const direction = language === 'en' ? -1 : 1;
-        const newPosition = prev + (direction * 2);
-
-        if (Math.abs(newPosition) >= maxScroll) {
-          return 0;
+        const newPosition = prev + direction;
+  
+        // For English (scrolling left)
+        if (direction === -1) {
+          if (Math.abs(prev) >= totalWidth / 2) {
+            return 0;
+          }
         }
-        if (newPosition > 0) {
-          return -maxScroll;
+        
+        // For Arabic (scrolling right)
+        if (direction === 1) {
+          if (prev >= totalWidth / 2) {
+            return 0;
+          }
         }
+  
         return newPosition;
       });
-    }, 20);
-
+    }, 30);
+  
     return () => clearInterval(interval);
   }, [language]);
 

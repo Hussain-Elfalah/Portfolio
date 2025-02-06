@@ -28,9 +28,11 @@
     display: flex;
     gap: 2rem;
     padding: 1rem;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.03s linear;
     will-change: transform;
     min-width: max-content;
+    margin-left: 50%;
+    margin-right: 50%;
   }
   
   .skills-grid {
@@ -43,6 +45,7 @@
   .skill-card {
     flex: 0 0 300px;
     padding: 1rem;
+    min-width: 300px;
   }
   
   .skill-content {
