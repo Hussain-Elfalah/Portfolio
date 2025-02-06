@@ -9,7 +9,7 @@ const Contact = ({ language }) => {
   const t = translations[language].contact;
 
   const contactInfo = {
-    whatsapp: '+218910526084',
+    whatsapp: '+218930402015',
     email: 'Hussain.mh.elfalah@gmail.com',
     linkedin: 'https://www.linkedin.com/in/hussain-elfallah-521a73322/',
     instagram: 'https://www.instagram.com/ui.design.club/'
