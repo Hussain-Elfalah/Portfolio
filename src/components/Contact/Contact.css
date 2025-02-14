@@ -92,6 +92,15 @@
     color: white;
   }
   
+  .github .icon-wrapper {
+    background-color: #333;
+    color: white;
+  }
+  
+  .dark .github .icon-wrapper {
+    background-color: #2b3137;
+  }
+  
   .contact-card h3 {
     color: #333;
     margin: 1rem 0;

@@ -41,6 +41,10 @@ export const translations = {
       instagram: {
         title: "Instagram",
         hint: "Click to follow"
+      },
+      github: {
+        title: "GitHub",
+        hint: "Check out my code"
       }
     }
   },
@@ -86,6 +90,10 @@ export const translations = {
       instagram: {
         title: "انستغرام",
         hint: "انقر للمتابعة"
+      },
+      github: {
+        title: "جيتهاب",
+        hint: "اطلع على الكود الخاص بي"
       }
     }
   }

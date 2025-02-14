@@ -104,6 +104,9 @@
 .skills.dark .skill-content {
   background-color: var(--dark-card-bg);
   color: var(--dark-text);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
 }
 
 .skills.dark .skill-content h3 {
@@ -111,14 +114,15 @@
 }
 
 .skills.dark .skill-category {
-  color: var(--primary-color);
+  color: var(--dark-text);
+  opacity: 0.8;
 }
 
 .skills.dark .skill-level {
-  background-color: rgba(255, 255, 255, 0.1);
+  background: var(--primary-color);
   color: var(--dark-text);
 }
 
-.skills.dark .skill-card {
+/* .skills.dark .skill-card {
   background-color: var(--dark-card-bg);
-}
+} */

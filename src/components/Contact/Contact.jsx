@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaWhatsapp, FaEnvelope, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaWhatsapp, FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { useTheme } from '../../context/ThemeContext';
 import { translations } from '../../translations';
 import './Contact.css';
@@ -12,7 +12,7 @@ const Contact = ({ language }) => {
     whatsapp: '+218930402015',
     email: 'Hussain.mh.elfalah@gmail.com',
     linkedin: 'https://www.linkedin.com/in/hussain-elfallah-521a73322/',
-    instagram: 'https://www.instagram.com/ui.design.club/'
+    github: 'https://github.com/Hussain-Elfalah'
   };
 
   const handleWhatsAppClick = () => {
@@ -61,23 +61,21 @@ const Contact = ({ language }) => {
             <FaLinkedin className="contact-icon" />
           </div>
           <h3>{t.linkedin.title}</h3>
-          <p>{t.linkedin.hint}</p>
-          <span className="card-hint">Click to visit profile</span>
+          <span className="card-hint">{t.linkedin.hint}</span>
         </a>
 
         <a 
-          href={contactInfo.instagram}
-          className="contact-card instagram"
+          href={contactInfo.github}
+          className="contact-card github"
           target="_blank"
           rel="noopener noreferrer"
         >
           <div className="card-overlay"></div>
           <div className="icon-wrapper">
-            <FaInstagram className="contact-icon" />
+            <FaGithub className="contact-icon" />
           </div>
-          <h3>{t.instagram.title}</h3>
-          <p>{t.instagram.hint}</p>
-          <span className="card-hint">Click to visit profile</span>
+          <h3>{t.github.title}</h3>
+          <span className="card-hint">{t.github.hint}</span>
         </a>
       </div>
     </section>
