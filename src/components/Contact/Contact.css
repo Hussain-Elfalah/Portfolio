@@ -190,9 +190,12 @@
   color: var(--dark-text);
 }
 
-.contact.dark h2,
 .contact.dark h3 {
   color: var(--dark-text);
+}
+
+.contact.dark h2 {
+  color: #4285f4;
 }
 
 .contact.dark p {
