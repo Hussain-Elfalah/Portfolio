@@ -98,7 +98,7 @@
 }
 
 .skills.dark h2 {
-  color: var(--dark-text);
+  color: var(--primary-color);
 }
 
 .skills.dark .skill-content {

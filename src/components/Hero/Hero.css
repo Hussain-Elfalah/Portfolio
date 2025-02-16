@@ -11,12 +11,20 @@
     background-color: var(--dark-background);
     color: var(--dark-text);
   }
-  
-  .hero.dark .hero-text h1,
-  .hero.dark .hero-text h2 {
-    color: var(--dark-text);
+
+  .hero.dark .hero-text h1 {
+    color: var(--primary-color);
   }
   
+  .hero.dark .hero-text h2 {
+    color: var(--accent-color);
+  }
+  .hero.dark .hero-text p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: var(--dark-text);
+  }
+
   .hero.dark .cta-button {
     background: linear-gradient(45deg, #5ddcff, #3c67e3);
     color: white;
