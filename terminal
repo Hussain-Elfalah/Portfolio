@@ -1,0 +1,8 @@
+# Stage the modified files
+git add src/components/Projects/Projects.jsx
+
+# Commit the changes
+git commit -m "feat: add new projects - HotSpots, Serag Bank, and Dice Game"
+
+# Push the changes to your GitHub repository
+git push origin main

@@ -9,6 +9,30 @@ const Projects = ({ language }) => {
 
   const projects = [
     {
+      title: language === 'en' ? "HotSpots" : "هوت سبوتس",
+      description: language === 'en' 
+        ? "A frontend for a project showcasing trending places in Benghazi, including logo design and identity development"
+        : "واجهة أمامية لمشروع يعرض الأماكن الرائجة في بنغازي، يشمل تصميم الشعار والهوية",
+      image: "/Portfolio/images/projects-images/Hotspts.svg",
+      link: "https://hussain-elfalah.github.io/HotSpots_FrontEnd/"
+    },
+    {
+      title: language === 'en' ? "Serag Bank Website" : "موقع مصرف السراج",
+      description: language === 'en'
+        ? "A temporary website for Serag Bank built with React and Tailwind CSS"
+        : "موقع مؤقت لمصرف السراج تم بناؤه باستخدام React و Tailwind CSS",
+      image: "/Portfolio/images/projects-images/Serag_bank.svg",
+      link: "https://hussain-elfalah.github.io/Bank-Website/"
+    },
+    {
+      title: language === 'en' ? "Dice Game" : "لعبة النرد",
+      description: language === 'en'
+        ? "An interactive dice game application"
+        : "تطبيق تفاعلي للعبة النرد",
+      image: "/Portfolio/images/projects-images/Dice_game.png",
+      link: "https://github.com/Hussain-Elfalah/Dice-Game"
+    },
+    {
       title: language === 'en' ? "Project Management" : "نظام إدارة المشاريع",
       description: language === 'en' 
         ? "A platform developed for an NGO to automate their project management process"

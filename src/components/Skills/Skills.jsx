@@ -11,8 +11,11 @@ const Skills = ({ language }) => {
   const skillsData = [
     { name: 'Node.js', level: t.levels.skillful, category: t.categories.backend },
     { name: 'Express.js', level: t.levels.skillful, category: t.categories.backend },
+    { name: 'Typescript', level: t.levels.skillful, category: t.categories.backend },
     { name: 'PostgreSQL', level: t.levels.skillful, category: t.categories.database },
-    { name: 'React.js', level: t.levels.beginner, category: t.categories.frontend },
+    { name: 'MongoDB', level: t.levels.beginner, category: t.categories.database },
+    { name: 'React.js', level: t.levels.skillful, category: t.categories.frontend },
+    { name: 'Vue.js', level: t.levels.skillful, category: t.categories.frontend },
     { name: 'RESTful APIs', level: t.levels.skillful, category: t.categories.backend },
     { name: 'Internet Computer', level: t.levels.beginner, category: t.categories.blockchain },
     { name: 'Smart Contracts', level: t.levels.beginner, category: t.categories.blockchain },
