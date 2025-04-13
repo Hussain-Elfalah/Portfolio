@@ -16,6 +16,7 @@ const Skills = ({ language }) => {
     { name: 'MongoDB', level: t.levels.beginner, category: t.categories.database },
     { name: 'React.js', level: t.levels.skillful, category: t.categories.frontend },
     { name: 'Vue.js', level: t.levels.skillful, category: t.categories.frontend },
+    { name: 'Tailwind CSS', level: t.levels.beginner, category: t.categories.frontend },
     { name: 'RESTful APIs', level: t.levels.skillful, category: t.categories.backend },
     { name: 'Internet Computer', level: t.levels.beginner, category: t.categories.blockchain },
     { name: 'Smart Contracts', level: t.levels.beginner, category: t.categories.blockchain },
