@@ -1,138 +1,171 @@
 :root {
-    /* Base sizes for mobile */
-    --container-padding: 1rem;
-    --section-padding: 2rem;
-    --card-width: 100%;
-    --card-height: 350px;
-    
-    /* Light theme */
-    --primary-color: #3c67e3;
-    --secondary-color: #4e00c2;
-    --accent-color: #5ddcff;
-    --background-color: #f5f5f5;
-    --text-color: #333;
-    --card-bg: white;
-    
-    /* Dark theme */
-    --dark-background: #1a1a1a;
-    --dark-text: #ffffff;
-    --dark-card-bg: #2d2d2d;
-    --font-en: 'Montserrat', sans-serif;
-    --font-ar: 'Cairo', sans-serif;
+  /* Base sizes for mobile */
+  --container-padding: 1rem;
+  --section-padding: 2rem;
+  --card-width: 100%;
+  --card-height: 350px;
+
+  /* Light theme - Butterfly Bush Palette */
+  --primary-color: #6f67a9; /* 600 */
+  --secondary-color: #9393c7; /* 400 */
+  --accent-color: #b6b7da; /* 300 */
+  --background-color: #f4f4fa; /* 50 */
+  --text-color: #2f2b40; /* 950 */
+  --card-bg: white;
+
+  /* Dark theme - Butterfly Bush Palette */
+  --dark-background: #2f2b40; /* 950 */
+  --dark-text: #e7e7f2; /* 100 */
+  --dark-card-bg: #494266; /* 900 */
+  --font-en: "Montserrat", sans-serif;
+  --font-ar: "IBM", "Cairo", sans-serif;
 }
 
 [data-theme="dark"] {
-    --background-color: var(--dark-background);
-    --text-color: var(--dark-text);
-    --card-bg: var(--dark-card-bg);
+  --background-color: var(--dark-background);
+  --text-color: var(--dark-text);
+  --card-bg: var(--dark-card-bg);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 16px; /* Base font size */
+  font-size: 16px; /* Base font size */
 }
 
 body {
-    font-family: var(--font-en);
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
-    transition: background-color 0.3s;
+  font-family: var(--font-en);
+  line-height: 1.6;
+  color: var(--text-color);
+  /* background-color is now handled by the sections or cards */
+  transition: background-color 0.3s;
+}
+
+.three-canvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
 }
 
 #root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .app {
-    width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
-    padding: var(--container-padding);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding: var(--container-padding);
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 section {
-    width: 100%;
-    padding: var(--section-padding);
-    margin: 0 auto;
+  width: 100%;
+  padding: var(--section-padding);
+  margin: 0 auto;
 }
 
 /* Typography */
-h1 { font-size: 1.75rem; }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.25rem; }
-p { font-size: 1rem; }
+h1 {
+  font-size: 1.75rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+p {
+  font-size: 1rem;
+}
 
 /* Tablet (768px and up) */
 @media (min-width: 768px) {
-    :root {
-        --container-padding: 2rem;
-        --section-padding: 3rem;
-        --card-height: 400px;
-    }
-    
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
-    h3 { font-size: 1.5rem; }
-    
-    section {
-        max-width: 90%;
-    }
+  :root {
+    --container-padding: 2rem;
+    --section-padding: 3rem;
+    --card-height: 400px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  section {
+    max-width: 90%;
+  }
 }
 
 /* Desktop (1024px and up) */
 @media (min-width: 1024px) {
-    :root {
-        --container-padding: 3rem;
-        --section-padding: 4rem;
-    }
-    
-    section {
-        max-width: 1200px;
-    }
-    
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2.5rem; }
+  :root {
+    --container-padding: 3rem;
+    --section-padding: 4rem;
+  }
+
+  section {
+    max-width: 1200px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 /* RTL Support */
 .rtl {
-    font-family: var(--font-ar);
-    direction: rtl;
-    text-align: right;
+  font-family: var(--font-ar);
+  direction: rtl;
+  text-align: right;
 }
 
 /* Navigation Controls */
 .nav-controls {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    gap: 1rem;
-    z-index: 1000;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 1000;
 }
 
 .theme-toggle,
 .lang-toggle {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    background: var(--card-bg);
-    color: var(--text-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Mobile Optimizations */
@@ -140,7 +173,7 @@ img {
   .app {
     padding: 0 1rem;
   }
-  
+
   section {
     padding: 3rem 1rem;
     margin: 0;
@@ -151,31 +184,31 @@ img {
   section {
     padding: 2rem 1rem;
   }
-  
+
   .app {
     padding: 0;
   }
-  
+
   .nav-controls {
     top: 0.5rem;
     right: 0.5rem;
     gap: 0.5rem;
   }
-  
+
   .theme-toggle,
   .lang-toggle {
     padding: 0.3rem 0.6rem;
     font-size: 0.85rem;
   }
-  
+
   h1 {
     font-size: 1.8rem !important;
   }
-  
+
   h2 {
     font-size: 1.5rem !important;
   }
-  
+
   p {
     font-size: 0.9rem !important;
   }
@@ -185,7 +218,7 @@ img {
   section {
     padding: 1.5rem 0.5rem;
   }
-  
+
   .nav-controls {
     top: 0.3rem;
     right: 0.3rem;

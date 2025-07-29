@@ -1,185 +1,268 @@
 .contact {
-    padding: 4rem 2rem;
-    background-color: #f8f9fa;
+  padding: 6rem 2rem;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.contact-container-artistic {
+  width: 100%;
+  max-width: 800px;
+  padding: 3rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  position: relative;
+}
+
+.contact.dark .contact-container-artistic {
+  background-color: rgba(47, 43, 64, 0.2);
+  border: 1px solid rgba(231, 231, 242, 0.2);
+}
+
+.contact-title-container h2 {
+  font-size: 3rem;
+  color: var(--primary-color); /* Rock-inspired color for contrast */
+  margin-bottom: 1rem;
+}
+
+.contact-title-container p {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 3rem;
+}
+
+.contact.dark .contact-title-container h2,
+.contact.dark .contact-title-container p {
+  color: var(--dark-text);
+}
+
+.floating-icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.floating-icon {
+  font-size: 3rem;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+  animation: float 6s ease-in-out infinite;
+}
+
+.contact.dark .floating-icon {
+  color: var(--dark-text);
+}
+
+.floating-icon:hover {
+  color: var(--primary-color);
+}
+
+.contact.dark .floating-icon:hover {
+  color: var(--accent-color);
+}
+
+.floating-icon.whatsapp {
+  animation-delay: 0s;
+}
+.floating-icon.email {
+  animation-delay: -1.5s;
+}
+.floating-icon.linkedin {
+  animation-delay: -3s;
+}
+.floating-icon.github {
+  animation-delay: -4.5s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
   }
-  
-  .contact h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 4rem;
-    color: #4285f4;
+  50% {
+    transform: translateY(-20px);
   }
-  
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.contact-card {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    var(--rotate),
+    rgba(93, 220, 255, 0.1),
+    rgba(60, 103, 227, 0.1),
+    rgba(78, 0, 194, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-card:hover .card-overlay {
+  opacity: 1;
+  animation: spin 2.5s linear infinite;
+}
+
+.icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: transform 0.5s ease;
+  z-index: 1;
+}
+
+.contact-icon {
+  font-size: 30px;
+}
+
+.whatsapp .icon-wrapper {
+  background-color: #25d366;
+  color: white;
+}
+
+.email .icon-wrapper {
+  background-color: #ea4335;
+  color: white;
+}
+
+.linkedin .icon-wrapper {
+  background-color: #0a66c2;
+  color: white;
+}
+
+.instagram .icon-wrapper {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  color: white;
+}
+
+.github .icon-wrapper {
+  background-color: #333;
+  color: white;
+}
+
+.dark .github .icon-wrapper {
+  background-color: #2b3137;
+}
+
+.contact-card h3 {
+  color: #333;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  z-index: 1;
+}
+
+.contact-card p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  z-index: 1;
+}
+
+.card-hint {
+  font-size: 0.8rem;
+  color: #666;
+  position: absolute;
+  bottom: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-card:hover .card-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-card:hover .icon-wrapper {
+  transform: scale(1.1) rotate(360deg);
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
   .contact-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
-  
-  .contact-card {
-    position: relative;
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
   }
-  
-  .card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      var(--rotate),
-      rgba(93, 220, 255, 0.1),
-      rgba(60, 103, 227, 0.1),
-      rgba(78, 0, 194, 0.1)
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
+
+  .contact {
+    padding: 3rem 1rem;
   }
-  
-  .contact-card:hover .card-overlay {
-    opacity: 1;
-    animation: spin 2.5s linear infinite;
-  }
-  
-  .icon-wrapper {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    transition: transform 0.5s ease;
-    z-index: 1;
-  }
-  
-  .contact-icon {
-    font-size: 30px;
-  }
-  
-  .whatsapp .icon-wrapper {
-    background-color: #25D366;
-    color: white;
-  }
-  
-  .email .icon-wrapper {
-    background-color: #EA4335;
-    color: white;
-  }
-  
-  .linkedin .icon-wrapper {
-    background-color: #0A66C2;
-    color: white;
-  }
-  
-  .instagram .icon-wrapper {
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-    color: white;
-  }
-  
-  .github .icon-wrapper {
-    background-color: #333;
-    color: white;
-  }
-  
-  .dark .github .icon-wrapper {
-    background-color: #2b3137;
-  }
-  
-  .contact-card h3 {
-    color: #333;
-    margin: 1rem 0;
-    font-size: 1.2rem;
-    z-index: 1;
-  }
-  
-  .contact-card p {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    z-index: 1;
-  }
-  
-  .card-hint {
-    font-size: 0.8rem;
-    color: #666;
-    position: absolute;
-    bottom: 1rem;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    z-index: 1;
-  }
-  
-  .contact-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .contact-card:hover .card-hint {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .contact-card:hover .card-overlay,
   .contact-card:hover .icon-wrapper {
-    transform: scale(1.1) rotate(360deg);
+    animation: none;
+    transform: none;
   }
-  
-  @property --rotate {
-    syntax: "<angle>";
-    initial-value: 132deg;
-    inherits: false;
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-card:hover .card-overlay,
+  .contact-card:hover .icon-wrapper {
+    animation: none;
+    transform: none;
   }
-  
-  @keyframes spin {
-    0% {
-      --rotate: 0deg;
-    }
-    100% {
-      --rotate: 360deg;
-    }
-  }
-  
-  /* Media Queries */
-  @media (max-width: 1200px) {
-    .contact-container {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .contact-container {
-      grid-template-columns: 1fr;
-    }
-  
-    .contact {
-      padding: 3rem 1rem;
-    }
-  }
-  
-  /* Accessibility */
-  @media (prefers-reduced-motion: reduce) {
-    .contact-card:hover .card-overlay,
-    .contact-card:hover .icon-wrapper {
-      animation: none;
-      transform: none;
-    }
-  }
+}
 
 .contact.dark {
   background-color: var(--dark-background);

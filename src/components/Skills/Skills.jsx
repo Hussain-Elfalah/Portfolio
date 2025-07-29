@@ -1,84 +1,86 @@
-import React, { useEffect, useState } from 'react';
-import { useTheme } from '../../context/ThemeContext';
-import { translations } from '../../translations';
-import './Skills.css';
+import React from "react";
+import { useTheme } from "../../context/ThemeContext";
+import { translations } from "../../translations";
+import { FaNodeJs, FaReact, FaVuejs } from "react-icons/fa";
+import {
+  SiExpress,
+  SiTypescript,
+  SiPostgresql,
+  SiMongodb,
+  SiTailwindcss,
+} from "react-icons/si";
+import { TbApi } from "react-icons/tb";
+import { FaLaravel } from "react-icons/fa";
+import { GiBrain, GiGears } from "react-icons/gi";
+import { GrCycle } from "react-icons/gr";
+import "./Skills.css";
+
+const imageStyle = `
+  .skill-image {
+    width: 48px;
+    height: 48px;
+    filter: grayscale(1) brightness(1.5);
+    transition: all 0.3s ease;
+  }
+
+  .skill-logo-wrapper:hover .skill-image {
+    filter: grayscale(0) brightness(1);
+    transform: scale(1.2);
+  }
+`;
 
 const Skills = ({ language }) => {
   const { isDarkMode } = useTheme();
   const t = translations[language].skills;
-  const [scrollPosition, setScrollPosition] = useState(0);
 
   const skillsData = [
-    { name: 'Node.js', level: t.levels.skillful, category: t.categories.backend },
-    { name: 'Express.js', level: t.levels.skillful, category: t.categories.backend },
-    { name: 'Typescript', level: t.levels.skillful, category: t.categories.backend },
-    { name: 'PostgreSQL', level: t.levels.skillful, category: t.categories.database },
-    { name: 'MongoDB', level: t.levels.beginner, category: t.categories.database },
-    { name: 'React.js', level: t.levels.skillful, category: t.categories.frontend },
-    { name: 'Vue.js', level: t.levels.skillful, category: t.categories.frontend },
-    { name: 'Tailwind CSS', level: t.levels.beginner, category: t.categories.frontend },
-    { name: 'RESTful APIs', level: t.levels.skillful, category: t.categories.backend },
-    { name: 'Internet Computer', level: t.levels.beginner, category: t.categories.blockchain },
-    { name: 'Smart Contracts', level: t.levels.beginner, category: t.categories.blockchain },
-    { name: 'Management Tools', level: t.levels.skillful, category: t.categories.softSkills },
-    { name: 'Leadership', level: t.levels.skillful, category: t.categories.softSkills },
-    { name: 'Problem Solving', level: t.levels.skillful, category: t.categories.softSkills },
+    { name: "Node.js", icon: <FaNodeJs /> },
+    { name: "Express.js", icon: <SiExpress /> },
+    { name: "Typescript", icon: <SiTypescript /> },
+    { name: "PostgreSQL", icon: <SiPostgresql /> },
+    { name: "MongoDB", icon: <SiMongodb /> },
+    { name: "React.js", icon: <FaReact /> },
+    { name: "Vue.js", icon: <FaVuejs /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+    { name: "RESTful APIs", icon: <TbApi /> },
+    // {
+    //   name: "Laravel",
+    //   icon: "C:/Users/Lenovo/Documents/Portfolio/public/images/Laravel.png",
+    //   isImage: true,
+    // },
+    // { name: "Problem Solving", icon: <GiBrain /> },
+    // { name: "Leadership", icon: <GrCycle /> },
+    // { name: "Management Tools", icon: <GiGears /> },
   ];
 
-  useEffect(() => {
-    const track = document.querySelector('.skills-track');
-    if (!track) return;
-  
-    const totalWidth = track.scrollWidth;
-    const viewportWidth = track.offsetWidth;
-    const maxScroll = totalWidth - viewportWidth;
-    
-    const interval = setInterval(() => {
-      setScrollPosition(prev => {
-        const direction = language === 'en' ? -1 : 1;
-        const newPosition = prev + direction;
-  
-        // For English (scrolling left)
-        if (direction === -1) {
-          if (Math.abs(prev) >= totalWidth / 2) {
-            return 0;
-          }
-        }
-        
-        // For Arabic (scrolling right)
-        if (direction === 1) {
-          if (prev >= totalWidth / 2) {
-            return 0;
-          }
-        }
-  
-        return newPosition;
-      });
-    }, 30);
-  
-    return () => clearInterval(interval);
-  }, [language]);
-
   return (
-    <section className={`skills ${isDarkMode ? 'dark' : ''}`}>
-      <h2>{t.title}</h2>
-      <div className="skills-carousel">
-        <div 
-          className="skills-track"
-          style={{ transform: `translateX(${scrollPosition}px)` }}
-        >
-          {skillsData.map((skill, index) => (
-            <div key={index} className="skill-card">
-              <div className="skill-content">
-                <h3>{skill.name}</h3>
-                <p className="skill-category">{skill.category}</p>
-                <p className="skill-level">{skill.level}</p>
+    <>
+      <style>{imageStyle}</style>
+      <section id="skills" className={`skills ${isDarkMode ? "dark" : ""}`}>
+        <div className="skills-container">
+          <h2>{t.title}</h2>
+          <div className="skills-grid">
+            {skillsData.map((skill, index) => (
+              <div
+                key={index}
+                className="skill-logo-wrapper"
+                data-tooltip={skill.name}
+              >
+                {skill.isImage ? (
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="skill-image"
+                  />
+                ) : (
+                  skill.icon
+                )}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

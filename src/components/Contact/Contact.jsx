@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FaWhatsapp, FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { useTheme } from '../../context/ThemeContext';
 import { translations } from '../../translations';
@@ -9,74 +10,59 @@ const Contact = ({ language }) => {
   const t = translations[language].contact;
 
   const contactInfo = {
-    whatsapp: '+218930402015',
-    email: 'Hussain.mh.elfalah@gmail.com',
+    whatsapp: 'https://wa.me/218930402015',
+    email: 'mailto:Hussain.mh.elfalah@gmail.com',
     linkedin: 'https://www.linkedin.com/in/hussain-elfallah-521a73322/',
     github: 'https://github.com/Hussain-Elfalah'
   };
 
-  const handleWhatsAppClick = () => {
-    window.open(`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}`, '_blank');
-  };
+  const icons = [
+    { id: 'whatsapp', icon: <FaWhatsapp />, link: contactInfo.whatsapp, delay: 0.2 },
+    { id: 'email', icon: <FaEnvelope />, link: contactInfo.email, delay: 0.4 },
+    { id: 'linkedin', icon: <FaLinkedin />, link: contactInfo.linkedin, delay: 0.6 },
+    { id: 'github', icon: <FaGithub />, link: contactInfo.github, delay: 0.8 },
+  ];
 
-  const handleEmailClick = () => {
-    window.location.href = `mailto:${contactInfo.email}`;
+  const iconVariants = {
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: (delay) => ({
+      opacity: 1,
+      scale: 1,
+      transition: { delay, duration: 0.5 }
+    })
   };
 
   return (
-    <section className={`contact ${isDarkMode ? 'dark' : ''}`}>
-      <h2>{t.title}</h2>
-      <div className="contact-container">
-        <div className="contact-card whatsapp" onClick={handleWhatsAppClick}>
-          <div className="card-overlay"></div>
-          <div className="icon-wrapper">
-            <FaWhatsapp className="contact-icon" />
-          </div>
-          <h3>{t.whatsapp.title}</h3>
-          <p>{contactInfo.whatsapp}</p>
-          <span className="card-hint">{t.whatsapp.hint}</span>
+    <section id="contact" className={`contact ${isDarkMode ? 'dark' : ''}`}>
+      <div className="contact-container-artistic">
+        <motion.div 
+          className="contact-title-container"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2>{t.title}</h2>
+          <p>{t.subtitle}</p>
+        </motion.div>
+        <div className="floating-icons-container">
+          {icons.map(({ id, icon, link, delay }) => (
+            <motion.a
+              key={id}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`floating-icon ${id}`}
+              custom={delay}
+              initial="hidden"
+              animate="visible"
+              variants={iconVariants}
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {icon}
+            </motion.a>
+          ))}
         </div>
-
-        <a 
-          href={`mailto:${contactInfo.email}`} 
-          className="contact-card email"
-        >
-          <div className="card-overlay"></div>
-          <div className="icon-wrapper">
-            <FaEnvelope className="contact-icon" />
-          </div>
-          <h3>{t.email.title}</h3>
-          <p>{contactInfo.email}</p>
-          <span className="card-hint">{t.email.hint}</span>
-        </a>
-
-        <a 
-          href={contactInfo.linkedin}
-          className="contact-card linkedin"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div className="card-overlay"></div>
-          <div className="icon-wrapper">
-            <FaLinkedin className="contact-icon" />
-          </div>
-          <h3>{t.linkedin.title}</h3>
-          <span className="card-hint">{t.linkedin.hint}</span>
-        </a>
-
-        <a 
-          href={contactInfo.github}
-          className="contact-card github"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div className="card-overlay"></div>
-          <div className="icon-wrapper">
-            <FaGithub className="contact-icon" />
-          </div>
-          <h3>{t.github.title}</h3>
-          <span className="card-hint">{t.github.hint}</span>
-        </a>
       </div>
     </section>
   );

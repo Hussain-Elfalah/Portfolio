@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import Hero from './components/Hero/Hero';
-import Skills from './components/Skills/Skills';
-import Projects from './components/Projects/Projects';
-import Contact from './components/Contact/Contact';
-import { ThemeProvider, useTheme } from './context/ThemeContext';
-import './styles/global.css';
+import React, { useState, useEffect } from "react";
+import ThreeScene from "./components/ThreeScene/ThreeScene";
+import Hero from "./components/Hero/Hero";
+import Skills from "./components/Skills/Skills";
+import Projects from "./components/Projects/Projects";
+import Contact from "./components/Contact/Contact";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
+import "./styles/global.css";
 
 function App() {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState("en");
 
   return (
     <ThemeProvider>
@@ -20,21 +21,24 @@ const AppContent = ({ language, setLanguage }) => {
   const { isDarkMode } = useTheme();
 
   useEffect(() => {
-    document.body.style.backgroundColor = isDarkMode ? 'var(--dark-background)' : 'var(--background-color)';
+    document.body.style.backgroundColor = isDarkMode
+      ? "var(--dark-background)"
+      : "var(--background-color)";
   }, [isDarkMode]);
 
   return (
     <div className="app">
       <nav className="nav-controls">
-        <button 
-          onClick={() => setLanguage(lang => lang === 'en' ? 'ar' : 'en')}
+        <button
+          onClick={() => setLanguage((lang) => (lang === "en" ? "ar" : "en"))}
           className="lang-toggle"
         >
-          {language === 'en' ? 'عربي' : 'English'}
+          {language === "en" ? "عربي" : "English"}
         </button>
         <ThemeToggle />
       </nav>
-      <main className={language === 'ar' ? 'rtl' : 'ltr'}>
+      <ThreeScene />
+      <main className={language === "ar" ? "rtl" : "ltr"}>
         <Hero language={language} />
         <Skills language={language} />
         <Projects language={language} />
@@ -48,7 +52,7 @@ const ThemeToggle = () => {
   const { isDarkMode, toggleTheme } = useTheme();
   return (
     <button onClick={toggleTheme} className="theme-toggle">
-      {isDarkMode ? '☀️' : '🌙'}
+      {isDarkMode ? "☀️" : "🌙"}
     </button>
   );
 };

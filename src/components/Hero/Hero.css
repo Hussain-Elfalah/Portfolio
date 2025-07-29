@@ -1,205 +1,233 @@
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s, color 0.3s;
-    padding: 2rem;
-  }
-  
-  .hero.dark {
-    background-color: var(--dark-background);
-    color: var(--dark-text);
-  }
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 2rem;
+  background-color: transparent; /* Make hero background transparent */
+}
 
-  .hero.dark .hero-text h1 {
-    color: var(--primary-color);
-  }
-  
-  .hero.dark .hero-text h2 {
-    color: var(--accent-color);
-  }
-  .hero.dark .hero-text p {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-    color: var(--dark-text);
-  }
+.hero.dark {
+  color: var(--dark-text);
+}
 
-  .hero.dark .cta-button {
-    background: linear-gradient(45deg, #5ddcff, #3c67e3);
-    color: white;
+.hero.dark .hero-text h1 {
+  color: var(--primary-color);
+}
+
+.hero.dark .hero-text h2 {
+  color: var(--accent-color);
+}
+.hero.dark .hero-text p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: var(--dark-text);
+}
+
+.hero.dark .cta-button {
+  background: linear-gradient(45deg, #5ddcff, #3c67e3);
+  color: white;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-content {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative; /* Ensure content is on top */
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero.dark .hero-content {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-image {
+  flex: 1;
+}
+
+.profile-pic-wrapper {
+  position: relative;
+  padding: 3px;
+  border-radius: 50%;
+}
+
+.profile-pic-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  padding: 3px;
+  z-index: 1;
+}
+
+.profile-pic-container::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    var(--rotate),
+    var(--accent-color),
+    var(--primary-color) 43%,
+    var(--secondary-color)
+  );
+  border-radius: 50%;
+  z-index: -1;
+  animation: spin 2.5s linear infinite;
+}
+
+.profile-pic-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(15px);
+  opacity: 0.5;
+  animation: spin 2.5s linear infinite;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  z-index: 2;
+  position: relative;
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
   }
-  
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+.profile-pic-container:hover::after {
+  opacity: 0.7;
+  filter: blur(20px);
+}
+
+.profile-pic-container:hover {
+  transform: scale(1.05);
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.hero-text h2 {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: var(--card-bg);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
   .hero-content {
-    display: flex;
-    gap: 4rem;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
   }
-  
-  .hero-image {
-    flex: 1;
-  }
-  
-  .profile-pic-wrapper {
-    position: relative;
-    padding: 3px;
-    border-radius: 50%;
-  }
-  
+
   .profile-pic-container {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    padding: 3px;
-    z-index: 1;
+    width: 200px;
+    height: 200px;
   }
-  
-  .profile-pic-container::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(
-      var(--rotate), 
-      var(--accent-color),
-      var(--primary-color) 43%,
-      var(--secondary-color)
-    );
-    border-radius: 50%;
-    z-index: -1;
-    animation: spin 2.5s linear infinite;
-  }
-  
-  .profile-pic-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: inherit;
-    border-radius: 50%;
-    z-index: -1;
-    filter: blur(15px);
-    opacity: 0.5;
-    animation: spin 2.5s linear infinite;
-  }
-  
-  .profile-pic {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid white;
-    z-index: 2;
-    position: relative;
-  }
-  
-  @property --rotate {
-    syntax: "<angle>";
-    initial-value: 132deg;
-    inherits: false;
-  }
-  
-  @keyframes spin {
-    0% {
-      --rotate: 0deg;
-    }
-    100% {
-      --rotate: 360deg;
-    }
-  }
-  
-  .profile-pic-container:hover::after {
-    opacity: 0.7;
-    filter: blur(20px);
-  }
-  
-  .profile-pic-container:hover {
-    transform: scale(1.05);
-  }
-  
+
   .hero-text {
-    flex: 1;
+    text-align: center;
+    padding: 0 1rem;
   }
-  
+
   .hero-text h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
+    font-size: 2rem;
   }
-  
+
   .hero-text h2 {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
   }
-  
+
   .hero-text p {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
-  
+
   .cta-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: transform 0.3s ease;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
-  
-  .cta-button:hover {
-    transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-pic-container::before,
+  .profile-pic-container::after {
+    animation: none;
   }
-  
-  @media (max-width: 768px) {
-    .hero-content {
-      flex-direction: column;
-      gap: 2rem;
-      text-align: center;
-    }
-  
-    .profile-pic-container {
-      width: 200px;
-      height: 200px;
-    }
-  
-    .hero-text {
-      text-align: center;
-      padding: 0 1rem;
-    }
-  
-    .hero-text h1 {
-      font-size: 2rem;
-    }
-  
-    .hero-text h2 {
-      font-size: 1.2rem;
-    }
-  
-    .hero-text p {
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-  
-    .cta-button {
-      padding: 0.8rem 1.5rem;
-      font-size: 0.9rem;
-    }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .profile-pic-container::before,
-    .profile-pic-container::after {
-      animation: none;
-    }
-  }
+}

@@ -1,108 +1,139 @@
-import React from 'react';
-import { useTheme } from '../../context/ThemeContext';
-import { translations } from '../../translations';
-import './Projects.css';
+import React, { useState } from "react";
+import { useTheme } from "../../context/ThemeContext";
+import { translations } from "../../translations";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, EffectCoverflow } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-coverflow";
+import "./Projects.css";
 
 const Projects = ({ language }) => {
   const { isDarkMode } = useTheme();
   const t = translations[language].projects;
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const projects = [
     {
-      title: language === 'en' ? "HotSpots" : "هوت سبوتس",
-      description: language === 'en' 
-        ? "A frontend for a project showcasing trending places in Benghazi, including logo design and identity development"
-        : "واجهة أمامية لمشروع يعرض الأماكن الرائجة في بنغازي، يشمل تصميم الشعار والهوية",
-      image: "/Portfolio/images/projects-images/Hotspts.svg",
-      link: "https://hussain-elfalah.github.io/HotSpots_FrontEnd/"
-    },
-    {
-      title: language === 'en' ? "Serag Bank Website" : "موقع مصرف السراج",
-      description: language === 'en'
-        ? "A temporary website for Serag Bank built with React and Tailwind CSS"
-        : "موقع مؤقت لمصرف السراج تم بناؤه باستخدام React و Tailwind CSS",
-      image: "/Portfolio/images/projects-images/Serag_bank.svg",
-      link: "https://hussain-elfalah.github.io/Bank-Website/"
-    },
-    {
-      title: language === 'en' ? "Dice Game" : "لعبة النرد",
-      description: language === 'en'
-        ? "An interactive dice game application"
-        : "تطبيق تفاعلي للعبة النرد",
-      image: "/Portfolio/images/projects-images/Dice_game.png",
-      link: "https://github.com/Hussain-Elfalah/Dice-Game"
-    },
-    {
-      title: language === 'en' ? "Project Management" : "نظام إدارة المشاريع",
-      description: language === 'en' 
-        ? "A platform developed for an NGO to automate their project management process"
-        : "منصة تم تطويرها لمنظمة غير حكومية لأتمتة عملية إدارة المشاريع",
-      image: "/Portfolio/images/projects-images/PMP.png",
-      link: "https://github.com/Hussain-Elfalah/ProjectManagement.git"
-    },
-    {
-      title: language === 'en' ? "Fitness Flow" : "تطبيق اللياقة",
-      description: language === 'en'
-        ? "A backend for a fitness application that tracks calories, progress etc.."
-        : "خلفية لتطبيق لياقة بدنية يتتبع السعرات الحرارية والتقدم وغير ذلك",
-      image: "/Portfolio/images/projects-images/Fitness-Flow.png",
-      link: "https://github.com/Hussain-Elfalah/Fitness-Flow.git"
-    },
-    {
-      title: language === 'en' ? "Stitsh.ai" : "ستيتش.اي",
-      description: language === 'en'
-        ? "Chat Bot application using OpenAI's API"
-        : "تطبيق دردشة ذكي يستخدم واجهة برمجة تطبيقات OpenAI",
+      category: "Stitsh AI",
+      title: "A backend for a chatbot app using OpenAI API.",
       image: "/Portfolio/images/projects-images/StitshAI.png",
-      link: "https://github.com/Hussain-Elfalah/Stitsh-ai.git"
+      link: "https://github.com/Hussain-Elfalah/Stitsh-ai",
     },
     {
-      title: language === 'en' ? "Blog Project" : "مشروع المدونة",
-      description: language === 'en'
-        ? "A blog application where you can add, edit and delete posts/blogs"
-        : "تطبيق مدونة يمكنك من خلاله إضافة وتعديل وحذف المنشورات/المدونات",
-      image: "/Portfolio/images/projects-images/Blog.png",
-      link: "https://github.com/Hussain-Elfalah/Blog-API-Project.git"
+      category: "Defect Tracking System",
+      title: "A full stack system for defects tracking and management.",
+      image:
+        "https://images.pexels.com/photos/5926382/pexels-photo-5926382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      link: "https://hussain-elfalah.github.io/DTS-Frontend-React/",
     },
     {
-      title: language === 'en' ? "Weather App" : "تطبيق الطقس",
-      description: language === 'en'
-        ? "Brings the weather forecast of Benghazi (looks better in mobile view)"
-        : "يجلب توقعات الطقس لمدينة بنغازي (يبدو أفضل في عرض الجوال)",
-      image: "/Portfolio/images/projects-images/Weather.png",
-      link: "https://github.com/Hussain-Elfalah/Weather-App.git"
+      category: "Lettering and Archiving System",
+      title:
+        "A full stack system for managing lettering and archiving of an organization.",
+      image:
+        "https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      link: "https://hussain-elfalah.github.io/LAS-Frontend-React/",
     },
     {
-      title: language === 'en' ? "Travel Tracker" : "متتبع السفر",
-      description: language === 'en'
-        ? "An application to check the countries you visited"
-        : "تطبيق للتحقق من البلدان التي زرتها",
-      image: "/Portfolio/images/projects-images/Travel.png",
-      link: "https://github.com/Hussain-Elfalah/Travel-Tracker.git"
+      category: "WaadPay Website",
+      title: "A modern concept website for waadpay using Next.js.",
+      image:
+        "https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      link: "https://waadpay-website-c7y0gi9sp-hussains-projects-f1aa8738.vercel.app",
     },
-    // Add more projects as needed
+    {
+      category: "Hotspots",
+      title:
+        "a concept app for tourist guide web application in Benghazi, Libya.",
+      image: "/Portfolio/images/projects-images/Benghazi.jpg",
+      link: "https://hussain-elfalah.github.io/HotSpots_FrontEnd/",
+    },
+    {
+      category: "Serag Bank Website",
+      title: "a temporary website for serag bank.",
+      image:
+        "https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      link: "https://hussain-elfalah.github.io/Bank-Website/",
+    },
   ];
 
+  const handleMouseMove = (e) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  };
+
   return (
-    <section className={`projects ${isDarkMode ? 'dark' : ''}`}>
-      <h2>{t.title}</h2>
-      <div className="projects-grid">
+    <section
+      className={`projects ${isDarkMode ? "dark" : ""}`}
+      onMouseMove={handleMouseMove}
+    >
+      {previewUrl && (
+        <div
+          className="website-preview"
+          style={{
+            top: `${mousePosition.y + 20}px`,
+            left: `${mousePosition.x + 20}px`,
+          }}
+        >
+          <img
+            src={`https://s.wordpress.com/mshots/v1/${encodeURIComponent(
+              previewUrl
+            )}?w=400`}
+            alt="Website preview"
+          />
+        </div>
+      )}
+      <h2 className="projects-title">{t.title}</h2>
+      <Swiper
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2.5,
+          slideShadows: false,
+        }}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        modules={[EffectCoverflow, Navigation]}
+        className="projects-swiper"
+      >
         {projects.map((project, index) => (
-          <a 
+          <SwiperSlide
             key={index}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card"
+            onMouseEnter={() => setPreviewUrl(project.link)}
+            onMouseLeave={() => setPreviewUrl(null)}
           >
-            <div className="card-content">
-              <img src={project.image} alt={project.title} />
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <span className="view-project">{t.viewProject}</span>
-            </div>
-          </a>
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-card-link"
+            >
+              <div
+                className="project-card-content"
+                style={{ backgroundImage: `url(${project.image})` }}
+              >
+                <div className="project-card-text">
+                  <p className="project-category">{project.category}</p>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                </div>
+              </div>
+            </a>
+          </SwiperSlide>
         ))}
+      </Swiper>
+      <div className="swiper-navigation">
+        <div className="swiper-button-prev"></div>
+        <div className="swiper-button-next"></div>
       </div>
     </section>
   );

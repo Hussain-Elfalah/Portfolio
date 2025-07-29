@@ -5,19 +5,25 @@
   "type": "module",
   "homepage": "https://hussain-elfalah.github.io/Portfolio",
   "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "lint": "eslint .",
-  "preview": "vite preview",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-},
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "@react-three/drei": "^9.92.7",
+    "@react-three/fiber": "^8.15.16",
     "framer-motion": "^12.0.5",
+    "gsap": "^3.13.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.4.0"
+    "react-icons": "^5.5.0",
+    "react-tilt": "^1.0.2",
+    "swiper": "^11.2.10",
+    "three": "^0.158.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
