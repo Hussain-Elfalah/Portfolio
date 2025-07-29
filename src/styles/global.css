@@ -17,8 +17,8 @@
   --dark-background: #2f2b40; /* 950 */
   --dark-text: #e7e7f2; /* 100 */
   --dark-card-bg: #494266; /* 900 */
-  --font-en: "Montserrat", sans-serif;
-  --font-ar: "IBM", "Cairo", sans-serif;
+  --font-en: "IBM Plex Sans Arabic", sans-serif;
+  --font-ar: "IBM Plex Sans Arabic", sans-serif;
 }
 
 [data-theme="dark"] {
@@ -160,12 +160,23 @@ img {
 .theme-toggle,
 .lang-toggle {
   padding: 0.5rem 1rem;
-  border: none;
   border-radius: 20px;
   cursor: pointer;
-  background: var(--card-bg);
-  color: var(--text-color);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Mobile Optimizations */
