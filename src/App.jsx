@@ -35,7 +35,7 @@ const AppContent = ({ language, setLanguage }) => {
         >
           {language === "en" ? "عربي" : "English"}
         </button>
-        <ThemeToggle />
+        {/* <ThemeToggle /> */}
       </nav>
       <ThreeScene />
       <main className={language === "ar" ? "rtl" : "ltr"}>
