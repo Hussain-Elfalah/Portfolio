@@ -53,7 +53,7 @@ const Hero = ({ language }) => {
           <motion.h2 variants={itemVariants}>{t.subtitle}</motion.h2>
           <motion.p variants={itemVariants}>{t.description}</motion.p>
           <motion.a 
-            href="/Portfolio/Hussain Elfallah - CV.pdf"
+            href="/Portfolio/Hussain-Elfallah-Resuma.pdf"
             className="cta-button"
             download
             variants={itemVariants}
