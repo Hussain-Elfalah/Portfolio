@@ -35,27 +35,29 @@
 
 html {
   font-size: 16px; /* Base font size */
+  background-color: #191920; /* ensure behind body is dark */
 }
 
 body {
   font-family: var(--font-en);
   line-height: 1.6;
   color: var(--text-color);
-  /* background-color is now handled by the sections or cards */
+  /* Ensure a stable dark backdrop behind the WebGL canvas (prevents white glow on iOS) */
+  background-color: #191920 !important;
   transition: background-color 0.3s;
+  overscroll-behavior-y: contain; /* reduce rubber-band showing page background */
 }
 
 .three-canvas {
   position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0; /* fill viewport without relying on vh units */
+  pointer-events: none; /* allow scroll/touch to pass through */
   z-index: 0;
 }
 
 #root {
   min-height: 100vh;
+  background-color: transparent; /* keep root transparent so canvas shows through */
   display: flex;
   flex-direction: column;
 }
@@ -162,21 +164,21 @@ img {
   padding: 0.5rem 1rem;
   border-radius: 20px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.25); /* darker glass to avoid white glow */
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   font-weight: 500;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .theme-toggle:hover,
 .lang-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.35);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Mobile Optimizations */

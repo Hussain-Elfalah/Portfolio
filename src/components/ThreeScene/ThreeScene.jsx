@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, Stars } from "@react-three/drei";
 
@@ -26,24 +26,47 @@ function SpaceObject() {
 }
 
 function ThreeScene() {
+  // Lock canvas container to initial viewport height to avoid mobile URL bar resize jank
+  const [vh, setVh] = useState(() => (typeof window !== 'undefined' ? window.innerHeight : 0));
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const updateOnOrientation = () => setVh(window.innerHeight);
+
+    // Only update height on orientation change (not on scroll-induced visual viewport changes)
+    window.addEventListener('orientationchange', updateOnOrientation);
+
+    return () => {
+      window.removeEventListener('orientationchange', updateOnOrientation);
+    };
+  }, []);
+
   return (
-    <Canvas className="three-canvas" camera={{ position: [0, 0, 18], fov: 55 }}>
-      <color attach="background" args={["#191920"]} />
-      <Stars
-        radius={100}
-        depth={50}
-        count={5000}
-        factor={4}
-        saturation={0}
-        fade
-        speed={1}
-      />
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} intensity={1.5} />
-      <Suspense fallback={null}>
-        <SpaceObject />
-      </Suspense>
-    </Canvas>
+    <div className="three-canvas" style={{ height: vh ? `${vh}px` : '100vh' }}>
+      <Canvas
+        style={{ width: '100%', height: '100%' }}
+        camera={{ position: [0, 0, 18], fov: 55 }}
+        dpr={[1, 1.5]}
+        gl={{ antialias: true, powerPreference: 'high-performance' }}
+      >
+        <color attach="background" args={["#191920"]} />
+        <Stars
+          radius={100}
+          depth={50}
+          count={5000}
+          factor={4}
+          saturation={0}
+          fade
+          speed={1}
+        />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[5, 5, 5]} intensity={1.5} />
+        <Suspense fallback={null}>
+          <SpaceObject />
+        </Suspense>
+      </Canvas>
+    </div>
   );
 }
 
