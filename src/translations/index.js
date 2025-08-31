@@ -26,6 +26,12 @@ export const translations = {
       viewProject: "View Project",
       projects_list: [
         {
+          category: "Euesperides",
+          title: "A demo website for an architecture company inspired from big.dk.",
+          image: "/Portfolio/images/projects-images/architecture.jpg",
+          link: "https://euesperides.vercel.app/",
+        },
+        {
           category: "Stitsh AI",
           title: "A backend for a chatbot app using OpenAI API.",
           image: "/Portfolio/images/projects-images/StitshAI.png",
@@ -120,7 +126,13 @@ export const translations = {
       viewProject: "عرض المشروع",
       projects_list: [
         {
-          category: "Stitsh AI",
+          category: "يوسبيريدس",
+          title: "موقع ويب تجريبي لشركة معمارية مستوحى من big.dk.",
+          image: "/Portfolio/images/projects-images/architecture.jpg",
+          link: "https://euesperides.vercel.app/",
+        },
+        {
+          category: "ستيتش AI",
           title: "باك اند لتطبيق محادثة باستخدام OpenAI API.",
           image: "/Portfolio/images/projects-images/StitshAI.png",
           link: "https://github.com/Hussain-Elfalah/Stitsh-ai",
@@ -147,7 +159,7 @@ export const translations = {
           link: "https://waadpay-website-c7y0gi9sp-hussains-projects-f1aa8738.vercel.app",
         },
         {
-          category: "Hotspots",
+          category: "هوت سبوتس",
           title: "تطبيق تجريبي لتطبيق دليل سياحي في بنغازي، ليبيا.",
           image: "/Portfolio/images/projects-images/Benghazi.jpg",
           link: "https://hussain-elfalah.github.io/HotSpots_FrontEnd/",
